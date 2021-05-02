@@ -6,14 +6,20 @@ include("auth_session.php");
 <body>
     <p>Welcome to hoosdown2study, <?php echo $_SESSION['username']; ?>! What would you like to do today?</p>
     <div>
-        <a href="./user.php">
+        <a href="./profile.php">
             <button>Profile</button>
         </a>
         <a href="./findBuddy.php">
-            <button>Find a Buddy</button>
+            <button>Browse Buddies</button>
         </a>
         <a href="./findAdvisor.php">
-            <button>Find an advisor</button>
+            <button>Browse Advisors</button>
+        </a>
+        <a href="./rateAdvisors.php">
+            <button>Rate Advisors</button>
+        </a>
+        <a href="./browseActivities.php">
+            <button>Browse Clubs and Activities</button>
         </a>
     </div>
 </body>

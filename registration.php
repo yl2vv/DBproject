@@ -14,13 +14,15 @@
         $username = stripslashes($_REQUEST['username']);
         //escapes special characters in a string
         $username = mysqli_real_escape_string($con, $username);
+        $name    = stripslashes($_REQUEST['name']);
+        $name    = mysqli_real_escape_string($con, $name);
         $email    = stripslashes($_REQUEST['email']);
         $email    = mysqli_real_escape_string($con, $email);
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($con, $password);
-        $create_datetime = date("Y-m-d H:i:s");
-        $query    = "INSERT into `users` (username, password, email, create_datetime)
-                     VALUES ('$username', '" . md5($password) . "', '$email', '$create_datetime')";
+
+        $query    = "INSERT into `person` (username, name, email, password)
+                     VALUES ('$username', '$name', '$email', '" . hash('sha256', $password) . "')";
         $result   = mysqli_query($con, $query);
         if ($result) {
             echo "<div class='form'>
@@ -38,8 +40,9 @@
     <form class="form" action="" method="post">
         <h1 class="login-title">Registration</h1>
         <input type="text" class="login-input" name="username" placeholder="Username" required />
-        <input type="text" class="login-input" name="email" placeholder="Email Adress">
-        <input type="password" class="login-input" name="password" placeholder="Password">
+        <input type="text" class="login-input" name="name" placeholder="Name" required />
+        <input type="text" class="login-input" name="email" placeholder="Email Adress" required>
+        <input type="password" class="login-input" name="password" placeholder="Password" required>
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link"><a href="login.php">Click to Login</a></p>
     </form>
