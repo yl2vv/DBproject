@@ -68,8 +68,9 @@
             $result3 = true;
         };
 
+
         $query    = "INSERT into `person` (username, name, email, password, studentID, advisorID)
-                     VALUES ('$username', '$name', '$email', '" . hash('sha256', $password) . "', '$studentID', '$advisorID')";
+                     VALUES ('$username', '$name', '$email', '" . password_hash($password, PASSWORD_BCRYPT) . "', '$studentID', '$advisorID')";
         $result   = mysqli_query($con, $query);
 
         if ($result && $result2 && $result3) {
