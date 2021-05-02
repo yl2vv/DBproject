@@ -24,12 +24,13 @@
     <h1>Login</h1>
     <p>this is for logging in</p>
     <form id=login>
-        <label for="email">Email:</label><br>
+        <label for="email">Username:</label><br>
         <input type=text id="email" name="email"><br>
         <label for="password">Password:</label><br>
         <input type=text id="password" name="password"><br>
     </form>
-    <button class=button form=login formaction="home.php">submit</button>
+    <!-- <button class=button form=login formaction="home.php">submit</button> -->
+	<button class=button form=login>submit</button>
 </body>
 
 </html>
