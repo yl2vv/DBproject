@@ -9,12 +9,13 @@
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($con, $password);
         // Check user is exist in the database
-        $query    = "SELECT * FROM `person` WHERE username='$username'
-                     AND password='" . hash('sha256', $password) . "'";
+        $query    = "SELECT password FROM `person` WHERE username='$username'";
         $result = mysqli_query($con, $query) or die(mysql_error());
-        $rows = mysqli_num_rows($result);
-        if ($rows == 1) {
+
+        //verify password with BCRYPT hash and salting
+        if (password_verify($password, mysqli_fetch_row($result)[0])) {
             $_SESSION['username'] = $username;
+            
             // Redirect to user dashboard page
             header("Location: home.php");
         } else {
