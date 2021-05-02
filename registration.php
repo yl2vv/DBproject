@@ -29,26 +29,39 @@
         }
 
         if (strcmp($student, "student") == 0) {
-            $studentID = generateRandomString();
+
+            $duplicate = true;
+            while ($duplicate) {
+                $studentID = generateRandomString();
+                $queryCheck = "SELECT student_ID from `student` WHERE student_ID=$studentID";
+                $resultCheck = mysqli_query($con, $queryCheck);
+                if ($resultCheck->num_rows == 0 ) {
+                    $duplicate = false;
+                }
+            }
 
             $query2 = "INSERT into `student` (student_ID, school_code, major, year)
                      VALUES ('$studentID', '', '', '')";
             $result2 = mysqli_query($con, $query2);
-            print($query2);
-            print($result2);
         }
         else {
             $studentID = NULL;
             $result2 = true;
         };
         if (strcmp($advisor, "advisor") == 0) {
-            $advisorID = generateRandomString();
+            $duplicate2 = true;
+            while ($duplicate2) {
+                $advisorID = generateRandomString();
+                $queryCheck2 = "SELECT AdvisorID from `advisor` WHERE AdvisorID=$AdvisorID";
+                $resultCheck2 = mysqli_query($con, $queryCheck2);
+                if ($resultCheck2->num_rows == 0 ) {
+                    $duplicate2 = false;
+                }
+            }
 
-            $query3 = "INSERT into `advisor` (advisorID, education_level)
+            $query3 = "INSERT into `advisor` (AdvisorID, education_level)
             VALUES ('$advisorID', '')";
             $result3 = mysqli_query($con, $query3);
-            print($query3);
-            print($result3);
         }
         else {
             $advisorID = NULL;
