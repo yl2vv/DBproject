@@ -12,7 +12,7 @@
         $comment    = stripslashes($_REQUEST['comment']);
         $comment    = mysqli_real_escape_string($con, $comment);
         $username = $_SESSION['username'];
-        $query    = "INSERT into `advises` (username_s, username_a, advisor_rating, advising_comments)
+        $query    = "INSERT into `advises` (studentID, advisorID, advisor_rating, advising_comments)
                      VALUES ('$username', '$advisorUsername', '$rating', '$comment')";
         $result   = mysqli_query($con, $query);
         if ($result) {
@@ -47,8 +47,7 @@
             <option value="5">5</option>
         </select><br>
         <label for="comment">Comment</label><br>
-        <textarea name="comment" rows="10" cols="30" maxlength='300'></textarea>
-        
+        <textarea name="comment" rows="10" cols="30" maxlength='300'></textarea>   
     </form>
     <button class=button form=login>submit</button>
 </body>
