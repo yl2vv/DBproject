@@ -24,7 +24,6 @@ include("auth_session.php");
                 $db = DbUtil::loginConnection();
                 $stmt = $db->stmt_init();
 
-                print($_SESSION['studentID']);
 
                 if($stmt->prepare("SELECT * FROM study_buddies S INNER JOIN person P ON S.studentID_b = P.studentID WHERE studentID_a LIKE ?") or die(mysqli_error($db))) {
                         $searchString = '%' . $_SESSION['studentID'] . '%';
