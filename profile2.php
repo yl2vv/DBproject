@@ -138,19 +138,20 @@ include("auth_session.php");
             $Almadrop = stripslashes($_REQUEST['Almadrop']);
             $Almadrop = mysqli_real_escape_string($con, $Almadrop);
             
-            $query3 = "UPDATE `alum_of` 
-                 SET school_code='$Almadrop'
-                 WHERE advisorID='$advisorID';";
-            $result3 = mysqli_query($con, $query3);
+            $query4 = "INSERT into `alum_of` (advisorID, school_code)
+            VALUES ('$advisorID', '$Almadrop');";
+            $result4 = mysqli_query($con, $query4);
 
             $expertiseList = stripslashes($_REQUEST['expertiseList']);
             $expertiseList = mysqli_real_escape_string($con, $expertiseList);
             $expertiseArray = explode (",", $expertiseList);
 
             foreach ($expertiseArray as $value) {
-                $query = "INSERT into `advisor_expertise` (advisorID, expertise)
-                VALUES ('$advisorID', '$value');";
-                $result4 = mysqli_query($con, $query);
+                if (strlen($value) > 0) {
+                        $query = "INSERT into `advisor_expertise` (advisorID, expertise)
+                        VALUES ('$advisorID', '$value');";
+                        $result4 = mysqli_query($con, $query);
+                }
             }
 
 
