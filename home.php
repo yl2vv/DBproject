@@ -21,7 +21,7 @@ include("auth_session.php");
             if ($_SESSION['studentID'] != NULL) {
                 echo "
                 <a href='./connections.php'>
-                    <button>Selected Students</button>
+                    <button class='homebutton'>Selected Students</button>
                 </a>
                 ";
             }
