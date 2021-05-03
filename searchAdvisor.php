@@ -40,16 +40,14 @@ require "db.php";
              $rating = $row['average_rating'];
         
              
-        // $expertisequery = "SELECT GROUP_CONCAT(expertise) FROM `advisor_expertise` WHERE advisorID = '".$row['advisorID']."'";
-        // $expertiseResult = mysqli_query($con, $expertisequery) or die(mysqli_error($con));
-        // $areas = mysqli_fetch_array($expertiseResult, MYSQLI_ASSOC);
-        // $commaexpertise = "";
-        // foreach($areas as &$area){
-        //     $commaexpertise.= $area.", ";
-        // }
-        // $commaexpertise = substr($commaexpertise, 0, -2);
-             $commaexpertise = "";
-        // echo $commaexpertise."<br>";
+        $expertisequery = "SELECT GROUP_CONCAT(expertise) FROM `advisor_expertise` WHERE advisorID = '".$row['advisorID']."'";
+        $expertiseResult = mysqli_query($con, $expertisequery) or die(mysqli_error($con));
+        $areas = mysqli_fetch_array($expertiseResult, MYSQLI_ASSOC);
+        $commaexpertise = "";
+        foreach($areas as &$area){
+            $commaexpertise.= $area.", ";
+        }
+        $commaexpertise = substr($commaexpertise, 0, -2);
         if (preg_match($expertise_search, $commaexpertise) == 0){
             continue;
         }

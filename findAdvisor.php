@@ -26,7 +26,7 @@
         <input class="xlarge" id="Educationinput" name='Educationinput' type="search" size="30" placeholder="Education Level"/>
         <input class="xlarge" id="Ratinginput" name='Ratinginput' type="number" placeholder="Minimum Rating"/>
         <input class="xlarge" id="Emailinput" name='Emailinput' type="search" size="30" placeholder="Email"/>
-        <input class="xlarge" id="Aluminput" name='Aluminput' type="search" size="30" placeholder="Alumni of..."/>
+        <input class="xlarge" id="Aluminput" name='Aluminput' type="search" size="30" placeholder="Alum of"/>
         <input class="xlarge" id="Expertiseinput" name='Expertiseinput' type="search" size="30" placeholder="Areas of Expertise"/>
         </form>
         <div id="NameResult"></div>
