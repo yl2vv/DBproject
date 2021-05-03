@@ -6,7 +6,7 @@ include("auth_session.php");
 <body>
     <p>Welcome to hoosdown2study, <?php echo $_SESSION['username']; ?>! What would you like to do today?</p>
     <div>
-        <a href="./profile.php">
+        <a href="./profile2.php">
             <button>Profile</button>
         </a>
         <a href="./findBuddy.php">
