@@ -7,7 +7,7 @@ require "db.php";
         $email_search = '%' . $_GET['searchEmail'] . '%';
         $education_search = '%' . $_GET['searchEducation'] . '%';
         $rating_search = $_GET['searchRating'];
-        $alum_search = '%' . $_GET['searchAlum'] . '%';
+        $alum_search = '/' . $_GET['searchAlum'] . '/i';
         $expertise_search = '/' . $_GET['searchExpertise'] . '/i';
 
         $query = sprintf($format, $user_search, $name_search, $education_search, $rating_search, $email_search);
@@ -38,21 +38,34 @@ require "db.php";
              $email = $row['email'];
              $education = $row['education_level'];
              $rating = $row['average_rating'];
-        
-             
-        $expertisequery = "SELECT GROUP_CONCAT(expertise) FROM `advisor_expertise` WHERE advisorID = '".$row['advisorID']."'";
-        $expertiseResult = mysqli_query($con, $expertisequery) or die(mysqli_error($con));
-        $areas = mysqli_fetch_array($expertiseResult, MYSQLI_ASSOC);
-        $commaexpertise = "";
-        foreach($areas as &$area){
-            $commaexpertise.= $area.", ";
-        }
-        $commaexpertise = substr($commaexpertise, 0, -2);
-        if (preg_match($expertise_search, $commaexpertise) == 0){
-            continue;
-        }
 
+        
+            $expertisequery = "SELECT GROUP_CONCAT(expertise) FROM `advisor_expertise` WHERE advisorID = '".$row['advisorID']."'";
+            $expertiseResult = mysqli_query($con, $expertisequery) or die(mysqli_error($con));
+            $areas = mysqli_fetch_array($expertiseResult, MYSQLI_ASSOC);
+            $commaexpertise = "";
+            foreach($areas as &$area){
+                $commaexpertise.= $area.", ";
+            }
+            $commaexpertise = substr($commaexpertise, 0, -2);
+            if (preg_match($expertise_search, $commaexpertise) == 0){
+                continue;
+            }
+
+
+        $alumquery = "SELECT GROUP_CONCAT(s_name) FROM `school` NATURAL JOIN `alum_of` WHERE advisorID = '".$row['advisorID']."'";
+
+        $alumResult = mysqli_query($con, $alumquery) or die(mysqli_error($con));
+        $alumnis = mysqli_fetch_array($alumResult, MYSQLI_ASSOC);
         $alum_of = "";
+        foreach($alumnis as &$alumni){
+                $alum_of.= $alumni.", ";
+            }
+            $alum_of = substr($alum_of, 0, -2);
+            if(preg_match($alum_search, $alum_of) == 0){
+                continue;
+            }
+        
 
         echo "<tr><td>$username</td><td>$name</td><td>$education</td><td>$rating</td><td>$email</td><td>$alum_of</td><td>$commaexpertise</td></tr>";
     }
