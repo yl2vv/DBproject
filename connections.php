@@ -6,7 +6,6 @@ include("auth_session.php");
         if(array_key_exists('removeStudent', $_POST)) {
                         $me = $_SESSION['studentID'];
                         $you = $_POST["removeStudent"];
-                        print($you);
 
                         require('db.php');
                         $query = "DELETE FROM `study_buddies` WHERE studentID_a='$me' AND studentID_b='$you';";
