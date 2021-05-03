@@ -158,10 +158,9 @@ include("auth_session.php");
         }
 
         if ($result && $result2 && $result3) {
-            echo "<p>Success</p>";
         ?>
             <script type="text/javascript">
-            // window.location.href = './home.php';
+            window.location.href = './home.php';
             </script>
         <?php
         }
@@ -172,6 +171,11 @@ include("auth_session.php");
     }
 ?>
 <html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
 <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script> 
         <script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
         <script>
@@ -207,9 +211,9 @@ include("auth_session.php");
         });
         </script>
 <body>
-    <h1>User</h1>
-    <p>Update your information</p>
-    <form id=profile2 method="post">
+    <form class="form" id=profile2 method="post">
+        <h1>User</h1>
+    <p class="subtext">Update your Information</p>
     <div>
             <?php
                     
@@ -223,7 +227,7 @@ include("auth_session.php");
                         <form id=findSchool>
                         <label for='schooldrop'>School:</label><br>
                         <input class='xlarge' id='Schoolinput' type='search' size='50' placeholder='School Name'/>
-                        <button type=button form=findSchool>search</button>
+                        <button type=button form=findSchool>Search</button>
                         </form>
                         <select name='schooldrop' id='schooldrop'>
                         <option value='$school_code2'>$sname2</option>
@@ -250,7 +254,7 @@ include("auth_session.php");
                         <form id=findAlma>
                         <label for='Almadrop'>Alum of:</label><br>
                         <input class='xlarge' id='almaInput' type='search' size='50' placeholder='School Name'/>
-                        <button type=button form=findAlma>search</button>
+                        <button type=button form=findAlma>Search</button>
                         </form>
                         <select name='Almadrop' id='Almadrop'>
                         <option value='$school_code3'>$sname3</option>
@@ -266,10 +270,12 @@ include("auth_session.php");
     <!-- <a href="./profile.php">
             <button>back</button>
     </a> -->
-    <button class=button type="submit" form=profile2>update</button>
+    <div class="buttonDiv">
+    <button class="home-button" type="submit" form=profile2>Update</button>
     <a href="./home.php">
-            <button>home</button>
+            <button class="home-button">Home</button>
     </a>
+    </div>
 </body>
 
 </html>
