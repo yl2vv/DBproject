@@ -3,14 +3,19 @@
 include("auth_session.php");
 ?>
 <html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
 <body>
-    <p>Welcome to hoosdown2study, <?php echo $_SESSION['username']; ?>! What would you like to do today?</p>
-    <div>
+    <p class="header">Welcome to HoosDown, <?php echo $_SESSION['username']; ?>!</p><p class="subheader">What would you like to do today?</p>
+    <div class="buttongroup">
         <a href="./profile2.php">
-            <button>Profile</button>
+            <button class="homebutton">Profile</button>
         </a>
         <a href="./findBuddy.php">
-            <button>Browse Students</button>
+            <button class="homebutton">Browse Students</button>
         </a>
         <?php 
             if ($_SESSION['studentID'] != NULL) {
@@ -22,13 +27,13 @@ include("auth_session.php");
             }
         ?>
         <a href="./findAdvisor.php">
-            <button>Browse Advisors</button>
+            <button class="homebutton">Browse Advisors</button>
         </a>
         <a href="./rateAdvisors.php">
-            <button>Rate Advisors</button>
+            <button class="homebutton">Rate Advisors</button>
         </a>
         <a href="./browseActivities.php">
-            <button>Browse Clubs and Activities</button>
+            <button class="homebutton">Browse Clubs and Activities</button>
         </a>
     </div>
 </body>
