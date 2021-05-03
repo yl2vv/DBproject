@@ -71,9 +71,6 @@
             VALUES ('$advisorID', NULL);";
             $result3 = mysqli_query($con, $query3);
 
-            $query4 = "INSERT into `alum_of` (advisorID, school_code)
-            VALUES ('$advisorID', NULL);";
-            $result4 = mysqli_query($con, $query4);
         }
         else {
             $advisorID = NULL;
