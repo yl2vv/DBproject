@@ -10,7 +10,7 @@
 <body>
     <div class="rateBody">
         <form class="form" id=login>
-            <h1 class="header">User</h1>
+            <h1 class="header">Rater</h1>
             <p class="subtext">Rate an Advisor You Met</p>
             <?php
             require('db.php');
