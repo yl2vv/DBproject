@@ -12,6 +12,15 @@ include("auth_session.php");
         <a href="./findBuddy.php">
             <button>Browse Students</button>
         </a>
+        <?php 
+            if ($_SESSION['studentID'] != NULL) {
+                echo "
+                <a href='./connections.php'>
+                    <button>Selected Students</button>
+                </a>
+                ";
+            }
+        ?>
         <a href="./findAdvisor.php">
             <button>Browse Advisors</button>
         </a>

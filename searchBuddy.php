@@ -17,9 +17,10 @@ require "db.php";
         // while($row = mysqli_fetch_row($result))
         // {
                 // echo print_r($row);
-echo "<table border=1><th>username</th><th>name</th><th>school</th><th>major</th><th>year</th><th>email</th><th>clubs</th>\n";
+echo "<table border=1><th>username</th><th>name</th><th>school</th><th>major</th><th>year</th><th>email</th><th>clubs</th><th>select student</th>\n";
  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $username = $row['username'];
+ $IDofStudent = $row['studentID'];
  $name   = $row['name'];
  $school = $row['s_name'];
  $year = $row['year'];
@@ -38,7 +39,7 @@ if (preg_match($club_search, $commaclubs) == 0){
         continue;
 }
 
- echo "<tr><td>$username</td><td>$name</td><td>$school</td><td>$major</td><td>$year</td><td>$email</td><td>$commaclubs</td></tr>";
+ echo "<tr><td>$username</td><td>$name</td><td>$school</td><td>$major</td><td>$year</td><td>$email</td><td>$commaclubs</td><td><form method='post'><button type='submit' name='connectStudents' value=$IDofStudent>select</button></form></td></tr>";
  }
  echo "</table>";
         // }

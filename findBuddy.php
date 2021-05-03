@@ -1,3 +1,26 @@
+<?php
+include("auth_session.php");
+?>
+<?php
+        if(array_key_exists('connectStudents', $_POST)) {
+                if ($_SESSION['studentID'] == NULL) {
+                        echo "You are not a student";
+                }
+                else {
+                        $me = $_SESSION['studentID'];
+                        $you = $_POST["connectStudents"];
+                        print("hello heheheehe");
+                        print($you);
+
+                        require('db.php');
+                        $query = "INSERT into `study_buddies` (studentID_a, studentID_b)
+                         VALUES ('$me', '$you');";
+                        $result = mysqli_query($con, $query);
+
+                }
+                
+        }
+?>
 <html>
 <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script> 
         <script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
