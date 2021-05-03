@@ -175,3 +175,14 @@ h3 {
     text-align: center;
     margin-top: 10px;
 }
+.buddyResult {
+    background-color: white;
+    overflow-y:auto;
+    max-height: 800px;
+}
+
+.buttonDiv2{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}

@@ -61,8 +61,8 @@ include("auth_session.php");
         <input class="xlarge" id="Clubinput" name='Clubinput' type="search" size="30" placeholder="Club"/>
         </form>
         </div>
-        <div id="yearResult"></div>
-        <div class="buttonDiv">
+        <div class='buddyResult' id="yearResult"></div>
+        <div class="buttonDiv2">
             <a href="./home.php"><button class=home-button >Home</button></a>
         </div>
         <div>
