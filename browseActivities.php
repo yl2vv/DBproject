@@ -35,8 +35,8 @@
         <br>
 
 </form>
-<a href="./home.php">
-            <button>home</button>
-        </a>
+<div class="buttonDiv">
+            <a href="./home.php"><button class=home-button >Home</button></a>
+        </div>
 </body>
 </html>
