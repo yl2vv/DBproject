@@ -55,8 +55,9 @@
             echo "advisor does not exist.";
         }
         else {
+            $rating = intval($rating);
             $query    = "INSERT into `advises` (studentID, advisorID, advisor_rating, advising_comments)
-                     VALUES ('$studentID', '$advisorID', '$rating', '$comment')";
+                     VALUES ('$studentID', '$advisorID', $rating, '$comment')";
             $result   = mysqli_query($con, $query);
 
             if ($result) {
@@ -92,6 +93,7 @@
             <option value="4">4</option>
             <option value="5">5</option>
         </select><br>
+        <!-- <input type=text id="rating" name="rating"></input> -->
         <label for="comment">Comment</label><br>
         <textarea name="comment" rows="10" cols="30" maxlength='300'></textarea>   
     </form>
