@@ -4,7 +4,7 @@ require "dbutil.php";
 
         $stmt = $db->stmt_init();
 
-        if($stmt->prepare("select * from school where s_name like ?") or die(mysqli_error($db))) {
+        if($stmt->prepare("select * from school where s_name like ? ORDER BY s_name ASC") or die(mysqli_error($db))) {
                 $searchString = '%' . $_GET['searchSchools'] . '%';
                 $stmt->bind_param('s', $searchString);
                 $stmt->execute();

@@ -24,13 +24,13 @@
         </script>
 </head>
 <body>
-<form class="form" id="searchClub">
+<form class="form1" id="searchClub">
         <h3>Browse clubs and activities in a school</h3>
 
         <input class="xlarge" id="Schoolinput" type="search" size="50" placeholder="School Name"/>
         <button type=button form='searchClub'>search</button>
 
-        <div id="Schoolresult"></div>
+        <div id="Schoolresult" class = "scroll"></div>
 
         <br>
 
