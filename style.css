@@ -143,6 +143,7 @@ h3 {
 .home-button {
     color: #fff;
     background: #101b29;
+    border-radius: 8px;
     border: 0;
     outline: 0;
     width: 70px;
@@ -151,6 +152,7 @@ h3 {
     text-align: center;
     cursor: pointer;
     margin-right: 5px;
+    text-decoration: none;
 }
 .home-button:hover{
     background: #9ca2aa;

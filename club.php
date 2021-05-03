@@ -1,4 +1,9 @@
 <html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Club Details</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
 <body>
     <p>Displaying clubs and activities for <?php echo $_GET['schoolName'];?></p>
         <?php
@@ -23,11 +28,11 @@
                 $db->close();
         ?>
     <div>
-        <a href="./browseActivities.php">
-            <button>Back</button>
+        <a class="homeA" href="./browseActivities.php">
+            <button class="home-button">Back</button>
         </a>
         <a href="./home.php">
-            <button>Home</button>
+            <button class="home-button">Home</button>
         </a>
     </div>
 </body>
