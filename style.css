@@ -127,7 +127,9 @@ h3 {
     text-align: center;
 }
 .xlarge{
-    width: 250px;
+    width: 200px;
+    height: 50px;
+
 }
 .rateBody {
     flex-direction: column;
@@ -153,3 +155,35 @@ h3 {
 .home-button:hover{
     background: #9ca2aa;
     }
+.findBuddyDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
+    width: 100%;
+}
+.findBuddyMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+.subtextfindBuddy{
+    color: rgb(53, 53, 53);
+    font-size: 35px;
+    text-align: center;
+    margin-top: 10px;
+}
+.buddyResult {
+    background-color: white;
+    overflow-y:auto;
+    max-height: 800px;
+}
+
+.buttonDiv2{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
