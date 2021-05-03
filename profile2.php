@@ -51,13 +51,42 @@ include("auth_session.php");
                                     $_SESSION['education_level']=$education_level;
                             }
                     $stmt->close();
-                }
+                    }
+
+                    $stmt = $db->stmt_init();
+
+                    if($stmt->prepare("SELECT * FROM alum_of WHERE advisorID like ?") or die(mysqli_error($db))) {
+                        $searchString = '%' . $_SESSION['advisorID'] . '%';
+                        $stmt->bind_param('s', $searchString);
+                        $stmt->execute();
+                        $stmt->bind_result($advisorID, $school_code3);
+                        while($stmt->fetch()) {
+                                $_SESSION['school_code3']=$school_code3;
+                        }
+                        $stmt->close();
+                    }
+
+                    $stmt = $db->stmt_init();
+
+                    if($stmt->prepare("SELECT * FROM school WHERE school_code like ?") or die(mysqli_error($db))) {
+                        $searchString = '%' . $_SESSION['school_code3'] . '%';
+                        $stmt->bind_param('s', $searchString);
+                        $stmt->execute();
+                        $stmt->bind_result($school_code, $s_name, $city, $state);
+                        while($stmt->fetch()) {
+                                $_SESSION['s_name3']=$s_name;
+                        }
+                        $stmt->close();
+                    }
 
                 }
 
                 $db->close();
 ?>
 <?php
+    $result = true;
+    $result2 = true;
+    $result3 = true;
     require('db.php');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($_SESSION['studentID'] != NULL) {
@@ -73,6 +102,24 @@ include("auth_session.php");
                      SET school_code='$schooldrop', major='$major', year='$year'
                      WHERE studentID='$studentID';";
             $result = mysqli_query($con, $query);
+
+            $clubList = stripslashes($_REQUEST['clubList']);
+            $clubList = mysqli_real_escape_string($con, $clubList);
+            $clubArray = explode (",", $clubList);
+
+            foreach ($clubArray as $value) {
+                $queryCheckClub = "SELECT * FROM `club` WHERE school_code='$schooldrop' AND c_name='$value';";
+                $resultClub = mysqli_query($con, $queryCheckClub);
+                if ($resultClub->num_rows < 1) {
+                    $query = "INSERT into `club` (c_name, school_code, classification)
+                     VALUES ('$value', '$schooldrop', '$value');";
+                    $result5 = mysqli_query($con, $query);
+                }
+                $query = "INSERT into `student_in_club` (studentID, c_name, school_code)
+                VALUES ('$studentID', '$value', '$schooldrop');";
+                $result4 = mysqli_query($con, $query);
+            }
+
             // print($query);
             // print($result);
         }
@@ -86,15 +133,34 @@ include("auth_session.php");
                      SET education_level='$education_level'
                      WHERE advisorID='$advisorID';";
             $result2 = mysqli_query($con, $query2);
-            // print($query2);
-            // print($result2);
+            
+
+            $Almadrop = stripslashes($_REQUEST['Almadrop']);
+            $Almadrop = mysqli_real_escape_string($con, $Almadrop);
+            
+            $query3 = "UPDATE `alum_of` 
+                 SET school_code='$Almadrop'
+                 WHERE advisorID='$advisorID';";
+            $result3 = mysqli_query($con, $query3);
+
+            $expertiseList = stripslashes($_REQUEST['expertiseList']);
+            $expertiseList = mysqli_real_escape_string($con, $expertiseList);
+            $expertiseArray = explode (",", $expertiseList);
+
+            foreach ($expertiseArray as $value) {
+                $query = "INSERT into `advisor_expertise` (advisorID, expertise)
+                VALUES ('$advisorID', '$value');";
+                $result4 = mysqli_query($con, $query);
+            }
+
+
         }
 
-        if ($result && $result2) {
+        if ($result && $result2 && $result3) {
             echo "<p>Success</p>";
         ?>
             <script type="text/javascript">
-            window.location.href = './home.php';
+            // window.location.href = './home.php';
             </script>
         <?php
         }
@@ -107,7 +173,6 @@ include("auth_session.php");
 <html>
 <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script> 
         <script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
-        <title>AJAX Persons Example</title>
         <script>
         $(document).ready(function() {
                 $( "#Schoolinput" ).change(function() {
@@ -123,7 +188,37 @@ include("auth_session.php");
                 });
                 
         });
+        $(document).ready(function() {
+                $( "#almaInput" ).change(function() {
+                
+                        $.ajax({
+                                url: 'searchSchools3.php', 
+                                data: {searchSchools: $( "#almaInput" ).val()},
+                                success: function(data){
+                                        $('#Almadrop').html(data);   
+                                
+                                }
+                        });
+                });
+                
+        });
         </script>
+        <!-- <script>
+        $(document).ready(function() {
+                $( "#almaInput" ).change(function() {
+                
+                        $.ajax({
+                                url: 'searchSchools3.php', 
+                                data: {searchSchools: $( "#almaInput" ).val()},
+                                success: function(data){
+                                        $('#Almadrop').html(data);   
+                                
+                                }
+                        });
+                });
+                
+        });
+        </script> -->
 <body>
     <h1>User</h1>
     <p>Update your information</p>
@@ -136,6 +231,7 @@ include("auth_session.php");
                     $year=$_SESSION['year'];
                     $sname2=$_SESSION['s_name'];
                     $school_code2=$_SESSION['school_code'];
+
                     // print($_SESSION['major']);
                     echo "
                         <form id=findSchool>
@@ -151,14 +247,30 @@ include("auth_session.php");
                         <input type=text id='major' name='major' value=$major><br><br>
                         <label for='year'>Year:</label><br>
                         <input type=text id='year' name='year' value=$year><br><br>
+                        <label for='clubList'> Clubs and Activities (separated by comma): </label><br>
+                        <input type=text class='xlarge' id='clubList' name='clubList'></input><br><br><br>
                         ";
                 }
 
                 if ($_SESSION['advisorID'] != NULL) {
                     $education_level=$_SESSION['education_level'];
+                    $sname3=$_SESSION['s_name3'];
+                    $school_code3=$_SESSION['school_code3'];
+
                     echo "
                         <label for='education_level'>Education Level:</label><br>
                         <input type=text id='education_level' name='education_level' value=$education_level><br><br>
+
+                        <form id=findAlma>
+                        <label for='Almadrop'>Alum of:</label><br>
+                        <input class='xlarge' id='almaInput' type='search' size='50' placeholder='School Name'/>
+                        <button class=button form=findAlma>search</button>
+                        </form>
+                        <select name='Almadrop' id='Almadrop'>
+                        <option value='$school_code3'>$sname3</option>
+                        </select><br><br><br>
+                        <label for='expertiseList'>Expertise (separated by comma): </label><br>
+                        <input type=text class='xlarge' id='expertiseList' name='expertiseList'></input>   
                         ";
                 }
             ?>
