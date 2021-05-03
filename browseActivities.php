@@ -29,8 +29,13 @@
 
         <input class="xlarge" id="Schoolinput" type="search" size="50" placeholder="School Name"/>
 
-        <div id="Schoolresult">Search Result</div>
+        <div id="Schoolresult"></div>
 
+        <br>
+        <a href="./home.php">
+            <button>home</button>
+        </a>
+        
 </form>
 </body>
 </html>

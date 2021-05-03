@@ -5,12 +5,11 @@
         <script>
         $(document).ready(function() {
                 $( "#Yearinput" ).change(function() {
-                
                         $.ajax({
                                 url: 'searchBuddy.php', 
                                 data: {searchYear: $( "#Yearinput" ).val()},
                                 success: function(data){
-                                        $('#yearResult').html(data);   
+                                        $('#yearResult').html(data); 
                                 
                                 }
                         });
@@ -20,13 +19,15 @@
         </script>
 </head>
 <body>
-        <h3>Search substring of name in Buddy Table</h3>
+        <h3>Search in Buddy Table</h3>
 
-        <input class="xlarge" id="Yearinput" type="search" size="30" placeholder="Year"/>
+        <input class="xlarge" id="Yearinput" name='Yearinput' type="search" size="30" placeholder="Year"/>
 
         <div id="yearResult">Search Result</div>
 
-
+        <a href="./home.php">
+            <button>home</button>
+        </a>
 </body>
 
 </html>
