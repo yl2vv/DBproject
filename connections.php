@@ -17,8 +17,13 @@ include("auth_session.php");
         }
 ?>
 <html>
+<link rel="stylesheet" href="connections.css"/>
+
 <body>
-    <p>Displaying students you selected</p>
+    <div class = "outside">
+    <h1 class = "header">Student Contact List</h1>
+    <p >Browse fellow students that you have chosen!</p>
+    <div class = "inside">
         <?php
                 require "dbutil.php";
                 $db = DbUtil::loginConnection();
@@ -42,9 +47,11 @@ include("auth_session.php");
 
                 $db->close();
         ?>
-    <div>
+    </div>
+    </div>
+    <div class = "homebuttonbackground">
         <a href="./home.php">
-            <button>Home</button>
+            <button class = "realhomebutton">Home</button>
         </a>
     </div>
 </body>
