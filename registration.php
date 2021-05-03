@@ -100,7 +100,7 @@
         <h1 class="login-title">Register as a New User</h1>
         <input type="text" class="login-input" name="username" placeholder="Username" required />
         <input type="text" class="login-input" name="name" placeholder="Name" required />
-        <input type="text" class="login-input" name="email" placeholder="Email Adress" required>
+        <input type="text" class="login-input" name="email" placeholder="Email Address" required>
         <input type="password" class="login-input" name="password" placeholder="Password" required>
         <p class="text">I want to be a:</p>
         <input type="hidden" name="student" value="" />
