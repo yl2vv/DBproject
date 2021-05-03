@@ -13,21 +13,64 @@
         $comment    = mysqli_real_escape_string($con, $comment);
         $username = $_SESSION['username'];
 
-        print($advisorUsername);
+        // $getStudentID = "SELECT studentID FROM `person` WHERE username='$username';";
+        // print($getStudentID);
+        
+        require "dbutil.php";
+        $db = DbUtil::loginConnection();
 
-        $query    = "INSERT into `advises` (studentID, advisorID, advisor_rating, advising_comments)
-                     VALUES ('$username', '$advisorUsername', '$rating', '$comment')";
-        $result   = mysqli_query($con, $query);
-        if ($result) {
-            echo "<div class='form'>
-                  <h3>Thank you for your submission.</h3><br/>
-                  <p class='link'><a href='home.php'>Return to Home</a></p>
-                  </div>";
-        } else {
-            echo "<div class='form'>
-                  <h3>Error, try again.</h3><br/>
-                  <p class='link'>Click here to <a href='rateAdvisors.php'>registration</a> again.</p>
-                  </div>";
+        $stmt = $db->stmt_init();
+
+        if($stmt->prepare("SELECT studentID FROM `person` WHERE username='$username';") or die(mysqli_error($db))) {
+                $stmt->execute();
+                $stmt->bind_result($studentID);
+                while($stmt->fetch()) {
+                    $studentID=$studentID;
+                }
+
+                $stmt->close();
+        }
+
+        $db->close();
+
+        $db = DbUtil::loginConnection();
+
+        $stmt = $db->stmt_init();
+
+        if($stmt->prepare("SELECT advisorID FROM `person` WHERE username='$advisorUsername';") or die(mysqli_error($db))) {
+                $stmt->execute();
+                $stmt->bind_result($advisorID);
+                $count=0;
+                while($stmt->fetch()) {
+                    $advisorID=$advisorID;
+                    $count++;
+                        
+                }
+
+                $stmt->close();
+        }
+
+        $db->close();
+        if ($count == 0) {
+            echo "advisor does not exist.";
+        }
+        else {
+            $query    = "INSERT into `advises` (studentID, advisorID, advisor_rating, advising_comments)
+                     VALUES ('$studentID', '$advisorID', '$rating', '$comment')";
+            $result   = mysqli_query($con, $query);
+
+            if ($result) {
+                echo "<div class='form'>
+                    <h3>Thank you for your submission.</h3><br/>
+                    <p class='link'><a href='home.php'>Return to Home</a></p>
+                    </div>";
+            } else {
+                echo "<div class='form'>
+                    <h3>Error, try again.</h3><br/>
+                    <p class='link'><a href='rateAdvisors.php'>retry</a></p>
+                    </div>";
+            }
+
         }
     } else {
 ?>
