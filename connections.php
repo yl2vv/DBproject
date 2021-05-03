@@ -6,7 +6,7 @@ include("auth_session.php");
 <link rel="stylesheet" href="style.css"/>
 
 <body>
-    <h1 class="subtextfindBuddy">Student Contact List</h1>
+    <h3 class="subtextfindBuddy">Student Contact List</h3>
     <div class="findBuddyMain">
     <p class='connectP'>Browse fellow students that you have chosen!</p>
     <?php
