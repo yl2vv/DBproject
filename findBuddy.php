@@ -9,8 +9,6 @@ include("auth_session.php");
                 else {
                         $me = $_SESSION['studentID'];
                         $you = $_POST["connectStudents"];
-                        print("hello heheheehe");
-                        print($you);
 
                         require('db.php');
                         $query = "INSERT into `study_buddies` (studentID_a, studentID_b)
@@ -65,7 +63,7 @@ include("auth_session.php");
         <div class="buttonDiv2">
             <a href="./home.php"><button class=home-button >Home</button></a>
         </div>
-        <div>
+</div>
 </body>
 
 </html>
