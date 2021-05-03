@@ -48,61 +48,24 @@ include("auth_session.php");
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<form class="form">
-        <h3 class="subtext">Find Buddies Based on Common Interests!</h3>
+        <h3 class="subtextfindBuddy">Find Students Based on Common Interests!</h3>
+        <div class="findBuddyMain">
+        <div class="findBuddyDiv">
         <form id="ajaxBuddy" name="ajaxBuddy">
-        <div class="row">
-        <div class="column">
-        <label class="text" for="advisorUsername">Username:</label>
-        </div>
-        <div class="column">
-                <input class="xlarge" id="Usernameinput" name='Usernameinput' type="search" size="30"/>
-                </div>
-        <div class="column">
-        <label class="text" for="advisorUsername">Name:</label>
-        </div>
-        <div class="column">
-        <input class="xlarge" id="Nameinput" name='Nameinput' type="search" size="30"/>
-        </div>
-                <div class="column">
-        <label class="text" for="advisorUsername">School:</label>
-        </div>
-                <div class="column">
-        <input class="xlarge" id="Schoolinput" name='Schoolinput' type="search" size="30"/>
-        </div>
-                <div class="column">
-        <label class="text" for="advisorUsername">Major:</label>
-        </div>
-                <div class="column">
-        <input class="xlarge" id="Majorinput" name='Majorinput' type="search" size="30"/>
-        </div>
-                <div class="column">
-        <label class="text" for="advisorUsername">Year:</label>
-        </div>
-                <div class="column">
-        <input class="xlarge" id="Yearinput" name='Yearinput' type="search" size="30"/>
-        </div>
-                <div class="column">
-        <label class="text" for="advisorUsername">Email:</label>
-        </div>
-                <div class="column">
-        <input class="xlarge" id="Emailinput" name='Emailinput' type="search" size="30"/>
-        </div>
-                <div class="column">
-        <label class="text" for="advisorUsername">Club:</label>
-        </div>
-                <div class="column">
-        <input class="xlarge" id="Clubinput" name='Clubinput' type="search" size="30"/>
-        </div>
+        <input class="xlarge" id="Usernameinput" name='Usernameinput' type="search" size="30" placeholder="Username"/>
+        <input class="xlarge" id="Nameinput" name='Nameinput' type="search" size="30" placeholder="Name"/>
+        <input class="xlarge" id="Schoolinput" name='Schoolinput' type="search" size="30" placeholder="School"/>
+        <input class="xlarge" id="Majorinput" name='Majorinput' type="search" size="30" placeholder="Major"/>
+        <input class="xlarge" id="Yearinput" name='Yearinput' type="search" size="30" placeholder="Year"/>
+        <input class="xlarge" id="Emailinput" name='Emailinput' type="search" size="30" placeholder="Email"/>
+        <input class="xlarge" id="Clubinput" name='Clubinput' type="search" size="30" placeholder="Club"/>
         </form>
-	</div>
-	</div>
-
+        </div>
         <div id="yearResult"></div>
-
-        <a href="./home.php">
-            <button>home</button>
-        </a>
+        <div class="buttonDiv">
+            <a href="./home.php"><button class=home-button >Home</button></a>
+        </div>
+        <div>
 </body>
 
 </html>
