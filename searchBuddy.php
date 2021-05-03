@@ -3,13 +3,14 @@ session_start();
 require "db.php";
         // $db = DbUtil::loginConnection();
         // $stmt = $db->stmt_init();
-        $format = "select * from person NATURAL JOIN student NATURAL JOIN school  WHERE username LIKE '%s' AND name LIKE '%s' AND s_name LIKE '%s' AND major LIKE '%s' AND year LIKE '%s' AND email LIKE '%s' ORDER BY name ASC LIMIT 20";
+        $format = "select * from person NATURAL JOIN student NATURAL JOIN school  WHERE username LIKE '%s' AND name LIKE '%s' AND s_name LIKE '%s' AND major LIKE '%s' AND year LIKE '%s' AND email LIKE '%s' ORDER BY name ASC";
         $user_search = '%' . $_GET['searchUser'] . '%';
         $name_search = '%' . $_GET['searchName'] . '%';
         $school_search = '%' . $_GET['searchSchool'] . '%';
         $year_search = '%' . $_GET['searchYear'] . '%';
         $email_search = '%' . $_GET['searchEmail'] . '%';
         $major_search = '%' . $_GET['searchMajor'] . '%';
+        $club_search = '/' . $_GET['searchClub'] . '/i';
 
         $query = sprintf($format, $user_search, $name_search, $school_search, $major_search, $year_search, $email_search);
         $result = mysqli_query($con, $query) or die(mysqli_error($con));
@@ -32,6 +33,10 @@ foreach($clubs as &$club){
         $commaclubs.= $club . ", ";
 }
 $commaclubs = substr($commaclubs, 0, -2);
+
+if (preg_match($club_search, $commaclubs) == 0){
+        continue;
+}
 
  echo "<tr><td>$username</td><td>$name</td><td>$school</td><td>$major</td><td>$year</td><td>$email</td><td>$commaclubs</td></tr>";
  }
