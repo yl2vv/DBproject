@@ -34,11 +34,11 @@
 </head>
 <body>
     <form class="form" method="post" name="login">
-        <h1 class="login-title">Login</h1>
+        <h1 class="login-title">Log In to Your Account</h1>
         <input type="text" class="login-input" name="username" placeholder="Username" autofocus="true"/>
         <input type="password" class="login-input" name="password" placeholder="Password"/>
         <input type="submit" value="Login" name="submit" class="login-button"/>
-        <p class="link"><a href="registration.php">New Registration</a></p>
+        <p class="link">Need an Account? <a href="registration.php">Sign up</a></p>
   </form>
 <?php
     }
