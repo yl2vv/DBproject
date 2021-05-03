@@ -185,4 +185,31 @@ h3 {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    background-color: red;
+}
+.findAdvisorDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
+    width: 100%;
+}
+.findAdvisorMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+.subtextfindAdvisor{
+    color: rgb(53, 53, 53);
+    font-size: 35px;
+    text-align: center;
+    margin-top: 10px;
+}
+.advisorResult {
+    background-color: white;
+    overflow-y:auto;
+    max-height: 800px;
 }
