@@ -12,6 +12,9 @@
         $comment    = stripslashes($_REQUEST['comment']);
         $comment    = mysqli_real_escape_string($con, $comment);
         $username = $_SESSION['username'];
+
+        print($advisorUsername);
+
         $query    = "INSERT into `advises` (studentID, advisorID, advisor_rating, advising_comments)
                      VALUES ('$username', '$advisorUsername', '$rating', '$comment')";
         $result   = mysqli_query($con, $query);
@@ -22,7 +25,7 @@
                   </div>";
         } else {
             echo "<div class='form'>
-                  <h3>Required fields are missing.</h3><br/>
+                  <h3>Error, try again.</h3><br/>
                   <p class='link'>Click here to <a href='rateAdvisors.php'>registration</a> again.</p>
                   </div>";
         }

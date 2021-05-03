@@ -33,21 +33,22 @@
             $duplicate = true;
             while ($duplicate) {
                 $studentID = generateRandomString();
-                $queryCheck = "SELECT student_ID from `student` WHERE student_ID=$studentID";
+                $queryCheck = "SELECT studentID from `student` WHERE studentID=$studentID";
                 $resultCheck = mysqli_query($con, $queryCheck);
                 if ($resultCheck->num_rows == 0 ) {
                     $duplicate = false;
                 }
             }
 
-            $query2 = "INSERT into `student` (student_ID, school_code, major, year)
-                     VALUES ('$studentID', '', '', '')";
+            $query2 = "INSERT into `student` (studentID, school_code, major, year)
+                     VALUES ('$studentID', NULL, NULL, NULL);";
             $result2 = mysqli_query($con, $query2);
         }
         else {
             $studentID = NULL;
             $result2 = true;
         };
+
         if (strcmp($advisor, "advisor") == 0) {
             $duplicate2 = true;
             while ($duplicate2) {
@@ -60,7 +61,7 @@
             }
 
             $query3 = "INSERT into `advisor` (AdvisorID, education_level)
-            VALUES ('$advisorID', '')";
+            VALUES ('$advisorID', NULL);";
             $result3 = mysqli_query($con, $query3);
         }
         else {
@@ -70,9 +71,8 @@
 
 
         $query    = "INSERT into `person` (username, name, email, password, studentID, advisorID)
-                     VALUES ('$username', '$name', '$email', '" . password_hash($password, PASSWORD_BCRYPT) . "', '$studentID', '$advisorID')";
+                     VALUES ('$username', '$name', '$email', '" . password_hash($password, PASSWORD_BCRYPT) . "', '$studentID', '$advisorID');";
         $result   = mysqli_query($con, $query);
-
         if ($result && $result2 && $result3) {
             $_SESSION['username'] = $username;
             $_SESSION['studentID'] = $studentID;
