@@ -226,9 +226,9 @@ include("auth_session.php");
                     echo "
                         <form id=findSchool>
                         <label for='schooldrop'>School:</label><br>
-                        <input class='xlarge' id='Schoolinput' type='search' size='50' placeholder='School Name'/>
+                        <input id='Schoolinput' type='search' size='50' placeholder='School Name'/>
                         <button type=button form=findSchool>Search</button>
-                        </form>
+                        </form><br>
                         <select name='schooldrop' id='schooldrop'>
                         <option value='$school_code2'>$sname2</option>
                         </select><br><br><br>
@@ -238,7 +238,7 @@ include("auth_session.php");
                         <label for='year'>Year:</label><br>
                         <input type=text id='year' name='year' value=$year><br><br>
                         <label for='clubList'> Clubs and Activities (separated by comma): </label><br>
-                        <input type=text class='xlarge' id='clubList' name='clubList'></input><br><br><br>
+                        <input type=text  id='clubList' name='clubList'></input><br><br><br>
                         ";
                 }
 
@@ -253,14 +253,14 @@ include("auth_session.php");
 
                         <form id=findAlma>
                         <label for='Almadrop'>Alum of:</label><br>
-                        <input class='xlarge' id='almaInput' type='search' size='50' placeholder='School Name'/>
+                        <input id='almaInput' type='search' size='50' placeholder='School Name'/>
                         <button type=button form=findAlma>Search</button>
                         </form>
                         <select name='Almadrop' id='Almadrop'>
                         <option value='$school_code3'>$sname3</option>
                         </select><br><br><br>
                         <label for='expertiseList'>Expertise (separated by comma): </label><br>
-                        <input type=text class='xlarge' id='expertiseList' name='expertiseList'></input>   
+                        <input type=text  id='expertiseList' name='expertiseList'></input>   
                         ";
                 }
             ?>

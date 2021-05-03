@@ -11,28 +11,28 @@ include("auth_session.php");
 <body>
     <p class="header">Welcome to HoosDown, <?php echo $_SESSION['username']; ?>!</p><p class="subheader">What would you like to do today?</p>
     <div class="buttongroup">
-        <a href="./profile2.php">
+        <a class="homeA" href="./profile2.php">
             <button class="homebutton">Profile</button>
         </a>
-        <a href="./findBuddy.php">
+        <a class="homeA" href="./findBuddy.php">
             <button class="homebutton">Browse Students</button>
         </a>
         <?php 
             if ($_SESSION['studentID'] != NULL) {
                 echo "
-                <a href='./connections.php'>
+                <a class='homeA' href='./connections.php'>
                     <button class='homebutton'>Selected Students</button>
-                </a>
+                </a><br>
                 ";
             }
         ?>
-        <a href="./findAdvisor.php">
+        <a class="homeA" href="./findAdvisor.php">
             <button class="homebutton">Browse Advisors</button>
         </a>
-        <a href="./rateAdvisors.php">
+        <a class="homeA" href="./rateAdvisors.php">
             <button class="homebutton">Rate Advisors</button>
         </a>
-        <a href="./browseActivities.php">
+        <a class="homeA" href="./browseActivities.php">
             <button class="homebutton">Browse Clubs and Activities</button>
         </a>
     </div>
