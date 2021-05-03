@@ -15,8 +15,17 @@ include("auth_session.php");
             <button class="homebutton">Profile</button>
         </a>
         <a href="./findBuddy.php">
-            <button class="homebutton">Browse Buddies</button>
+            <button class="homebutton">Browse Students</button>
         </a>
+        <?php 
+            if ($_SESSION['studentID'] != NULL) {
+                echo "
+                <a href='./connections.php'>
+                    <button>Selected Students</button>
+                </a>
+                ";
+            }
+        ?>
         <a href="./findAdvisor.php">
             <button class="homebutton">Browse Advisors</button>
         </a>
