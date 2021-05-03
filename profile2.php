@@ -46,7 +46,7 @@ include("auth_session.php");
                             $searchString = '%' . $_SESSION['advisorID'] . '%';
                             $stmt->bind_param('s', $searchString);
                             $stmt->execute();
-                            $stmt->bind_result($advisorID, $education_level);
+                            $stmt->bind_result($advisorID, $education_level, $average_rating);
                             while($stmt->fetch()) {
                                     $_SESSION['education_level']=$education_level;
                             }
@@ -165,9 +165,9 @@ include("auth_session.php");
     </div>
         
     </form>
-    <a href="./profile.php">
+    <!-- <a href="./profile.php">
             <button>back</button>
-    </a>
+    </a> -->
     <button class=button type="submit" form=profile2>update</button>
     <a href="./home.php">
             <button>home</button>
