@@ -10,8 +10,8 @@
 <body>
     <div class="rateBody">
         <form class="form" id=login>
-            <h1 class="header">Rater</h1>
-            <p class="subtext">Rate an Advisor You Met</p>
+            <h1 class="header">Give feedback about an Advisor You Met</h1>
+            <p class="subtext">Leave a rating and make sure to comment!</p>
             <?php
             require('db.php');
             // When form submitted, insert values into the database.
