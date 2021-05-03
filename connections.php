@@ -17,6 +17,7 @@ include("auth_session.php");
         }
 ?>
 <html>
+<link rel="stylesheet" href="connections.css"/>
 <body>
     <p>Displaying students you selected</p>
         <?php

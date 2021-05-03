@@ -1,0 +1,14 @@
+body {
+    background: #86bcff;
+}
+h1.login-title {
+    color: #666;
+    margin: 0px auto 25px;
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+}
+h3 {
+    font-weight: normal;
+    text-align: center;
+}
