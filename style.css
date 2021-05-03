@@ -99,8 +99,7 @@ h3 {
     border-radius: 15px;
     border:5px #2D477A;
     cursor:pointer;
-
-    padding:23px 25px;
+    padding:23px 30px;
     color: white;
     margin-bottom: 30px;
     opacity: 0.6;
@@ -125,6 +124,9 @@ h3 {
 }
 .buttongroup{
     text-align: center;
+}
+.xlarge{
+    width: 250px;
 }
 .rateBody {
     flex-direction: column;
