@@ -16,7 +16,7 @@ require "db.php";
         // while($row = mysqli_fetch_row($result))
         // {
                 // echo print_r($row);
-echo "<table border=1><th>username</th><th>name</th><th>school</th><th>major</th><th>year</th><th>email</th>\n";
+echo "<table border=1><th>username</th><th>name</th><th>school</th><th>major</th><th>year</th><th>email</th><th>clubs</th>\n";
  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $username = $row['username'];
  $name   = $row['name'];
@@ -24,7 +24,16 @@ echo "<table border=1><th>username</th><th>name</th><th>school</th><th>major</th
  $year = $row['year'];
  $email = $row['email'];
  $major = $row['major'];
- echo "<tr><td>$username</td><td>$name</td><td>$school</td><td>$major</td><td>$year</td><td>$email</td></tr>";
+ $clubquery = "SELECT GROUP_CONCAT(c_name) FROM `student_in_club` WHERE studentID = '".$row['studentID']."'";
+ $clubresult =  mysqli_query($con, $clubquery) or die(mysqli_error($con));
+$clubs = mysqli_fetch_array($clubresult, MYSQLI_ASSOC);
+$commaclubs = "";
+foreach($clubs as &$club){
+        $commaclubs.= $club . ", ";
+}
+$commaclubs = substr($commaclubs, 0, -2);
+
+ echo "<tr><td>$username</td><td>$name</td><td>$school</td><td>$major</td><td>$year</td><td>$email</td><td>$commaclubs</td></tr>";
  }
  echo "</table>";
         // }
