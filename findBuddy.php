@@ -9,7 +9,7 @@
                                 url: 'searchBuddy.php', 
                                 data: {searchYear: $( "#Yearinput" ).val(), searchSchool: $ ( "#Schoolinput" ).val(),
                                 searchUser: $( "#Usernameinput" ).val(), searchName: $( "#Nameinput" ).val(),
-                                searchEmail: $( "#Emailinput" ).val(), searchMajor: $( "#Majorinput" ).val()},
+                                searchEmail: $( "#Emailinput" ).val(), searchMajor: $( "#Majorinput" ).val(), searchClub: $( "#Clubinput" ).val()},
                                 success: function(data){
                                         $('#yearResult').html(data); 
                                 
@@ -30,6 +30,7 @@
         <input class="xlarge" id="Majorinput" name='Majorinput' type="search" size="30" placeholder="Major"/>
         <input class="xlarge" id="Yearinput" name='Yearinput' type="search" size="30" placeholder="Year"/>
         <input class="xlarge" id="Emailinput" name='Emailinput' type="search" size="30" placeholder="Email"/>
+        <input class="xlarge" id="Clubinput" name='Clubinput' type="search" size="30" placeholder="Club"/>
         </form>
 
 
