@@ -189,6 +189,8 @@ include("auth_session.php");
                 });
                 
         });
+        </script>
+        <script>
         $(document).ready(function() {
                 $( "#almaInput" ).change(function() {
                 
@@ -204,22 +206,6 @@ include("auth_session.php");
                 
         });
         </script>
-        <!-- <script>
-        $(document).ready(function() {
-                $( "#almaInput" ).change(function() {
-                
-                        $.ajax({
-                                url: 'searchSchools3.php', 
-                                data: {searchSchools: $( "#almaInput" ).val()},
-                                success: function(data){
-                                        $('#Almadrop').html(data);   
-                                
-                                }
-                        });
-                });
-                
-        });
-        </script> -->
 <body>
     <h1>User</h1>
     <p>Update your information</p>
@@ -233,12 +219,11 @@ include("auth_session.php");
                     $sname2=$_SESSION['s_name'];
                     $school_code2=$_SESSION['school_code'];
 
-                    // print($_SESSION['major']);
                     echo "
                         <form id=findSchool>
                         <label for='schooldrop'>School:</label><br>
                         <input class='xlarge' id='Schoolinput' type='search' size='50' placeholder='School Name'/>
-                        <button class=button form=findSchool>search</button>
+                        <button type=button form=findSchool>search</button>
                         </form>
                         <select name='schooldrop' id='schooldrop'>
                         <option value='$school_code2'>$sname2</option>
@@ -265,7 +250,7 @@ include("auth_session.php");
                         <form id=findAlma>
                         <label for='Almadrop'>Alum of:</label><br>
                         <input class='xlarge' id='almaInput' type='search' size='50' placeholder='School Name'/>
-                        <button class=button form=findAlma>search</button>
+                        <button type=button form=findAlma>search</button>
                         </form>
                         <select name='Almadrop' id='Almadrop'>
                         <option value='$school_code3'>$sname3</option>
