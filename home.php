@@ -10,7 +10,7 @@ include("auth_session.php");
             <button>Profile</button>
         </a>
         <a href="./findBuddy.php">
-            <button>Browse Buddies</button>
+            <button>Browse Students</button>
         </a>
         <a href="./findAdvisor.php">
             <button>Browse Advisors</button>
