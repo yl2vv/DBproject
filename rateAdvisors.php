@@ -35,24 +35,47 @@
     }
 ?>
 <html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Rate Advisors</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
 <body>
-    <h1>User</h1>
-    <p>Rate an advisor you met</p>
-    <form id=login>
-        <label for="advisorUsername">Advisor Username:</label><br>
-        <input type=text id="advisorUsername" name="advisorUsername"><br>
-        <label for="rating">Advisor Rating</label><br>
-        <select id="rating" name="rating">
+    <form class="form" id=login>
+    	<h1 class="header">User</h1>
+    	<p class="subtext">Rate an Advisor You Met</p>
+    	<div class="row">
+    		<div class="column">
+        <label class="text" for="advisorUsername">Advisor Username:</label><br>
+        </div>
+        <div class="column">
+        <input class="select" type=text id="advisorUsername" name="advisorUsername"><br>
+        </div>
+        </div>
+        <br>
+        <div class="column">
+        <label class="text" for="rating">Advisor Rating:</label><br>
+        </div>
+        <div class="column">
+        <select class="select" id="rating" name="rating">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-        </select><br>
-        <label for="comment">Comment</label><br>
-        <textarea name="comment" rows="10" cols="30" maxlength='300'></textarea>   
+        </select>
+        </div>
+        <br>
+        <br>
+        <div class="column">
+        <label class="text" for="comment">Comment:</label><br>
+        </div>
+        <div class="column">
+        <textarea class="textarea" name="comment" rows="10" cols="30" maxlength='300'></textarea>   
+        </div>
+        <button class=login-button form=login>Submit</button>
     </form>
-    <button class=button form=login>submit</button>
+
 </body>
 
 </html>
