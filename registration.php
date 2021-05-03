@@ -28,6 +28,13 @@
             return $randomString;
         }
 
+        $result = true;
+        $result2 = true;
+        $result3 = true;
+        $result4 = true;
+        $result5 = true;
+
+
         if (strcmp($student, "student") == 0) {
 
             $duplicate = true;
@@ -63,23 +70,40 @@
             $query3 = "INSERT into `advisor` (AdvisorID, education_level)
             VALUES ('$advisorID', NULL);";
             $result3 = mysqli_query($con, $query3);
+
+            $query4 = "INSERT into `alum_of` (advisorID, school_code)
+            VALUES ('$advisorID', NULL);";
+            $result4 = mysqli_query($con, $query4);
         }
         else {
             $advisorID = NULL;
             $result3 = true;
         };
 
-
-        $query    = "INSERT into `person` (username, name, email, password, studentID, advisorID)
+        if ($advisorID == NULL && $studentID == NULL) {
+            $query    = "INSERT into `person` (username, name, email, password, studentID, advisorID)
+                     VALUES ('$username', '$name', '$email', '" . password_hash($password, PASSWORD_BCRYPT) . "', NULL, NULL);";
+        }
+        else if ($studentID == NULL) {
+            $query    = "INSERT into `person` (username, name, email, password, studentID, advisorID)
+            VALUES ('$username', '$name', '$email', '" . password_hash($password, PASSWORD_BCRYPT) . "', NULL, '$advisorID');";
+        }
+        else if ($advisorID == NULL) {
+            $query    = "INSERT into `person` (username, name, email, password, studentID, advisorID)
+            VALUES ('$username', '$name', '$email', '" . password_hash($password, PASSWORD_BCRYPT) . "', '$studentID', NULL);";
+        }
+        else {
+            $query    = "INSERT into `person` (username, name, email, password, studentID, advisorID)
                      VALUES ('$username', '$name', '$email', '" . password_hash($password, PASSWORD_BCRYPT) . "', '$studentID', '$advisorID');";
-        $result   = mysqli_query($con, $query);
+        }
+                     $result   = mysqli_query($con, $query);
         if ($result && $result2 && $result3) {
             $_SESSION['username'] = $username;
             $_SESSION['studentID'] = $studentID;
             $_SESSION['advisorID'] = $advisorID;
             echo "<div class='form'>
             <h3>You are registered successfully.</h3><br/>
-            <p class='link'>Click here to <a href='profile.php'>Proceed to profile</a></p>
+            <p class='link'>Click here to <a href='profile2.php'>Proceed to profile</a></p>
             </div>";
         } else {
             echo "<div class='form'>
