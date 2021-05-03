@@ -8,6 +8,15 @@ body {
     padding: 30px 25px;
     background: #dfebfa;
 }
+.form1 {
+    font-family: Arial;
+    margin: 50px auto;
+    width: 500px;
+    height:400px;
+    overflow-y:auto;
+    padding: 30px 25px;
+    background: #dfebfa;
+}
 h1.login-title {
     color: #666;
     margin: 0px auto 25px;
