@@ -183,7 +183,12 @@ h3 {
     overflow-y:auto;
     max-height: 800px;
 }
-
+.buddyResult1 {
+    background-color: white;
+    overflow-y:auto;
+    max-height: 800px;
+    width: calc(37%);
+}
 .buttonDiv2{
     display: flex;
     justify-content: center;
