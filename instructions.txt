@@ -1,5 +1,5 @@
-cd into this folder
+1. cd into this folder
 
-php -S 127.0.0.1:8000
+2. php -S 127.0.0.1:8000
 
-on Chrome, go to http://localhost:8000/file.php
+3. on browser, go to http://localhost:8000/login.php
