@@ -16,7 +16,7 @@
                         $stmt->bind_param('s', $searchString);
                         $stmt->execute();
                         $stmt->bind_result($c_name, $school_code, $classification);
-                        echo "<div class='buddyResult'><table border=1><th>Club / Activity</th><th>Classification</th>\n";
+                        echo "<div class='buddyResult1'><table border=1><th>Club / Activity</th><th>Classification</th>\n";
                         while($stmt->fetch()) {
                                 echo "<tr><td>$c_name</td><td>$classification</td></tr>";
                         }
