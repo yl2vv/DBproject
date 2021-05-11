@@ -187,7 +187,6 @@ h3 {
     background-color: white;
     overflow-y:auto;
     max-height: 800px;
-    width: calc(37%);
 }
 .buttonDiv2{
     display: flex;
@@ -234,4 +233,24 @@ h3 {
 }
 .connectP{
     font-size: 20px;
+}
+.clubButtons {
+    margin-top: 20px;
+}
+.clubPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.formButton {
+    height: 100%;
+    padding-top: 20%;
+}
+.formButton2 {
+    height: 100%;
+    padding-top: 20%;
+}
+.tableText {
+    text-align: center;
 }

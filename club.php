@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <p>Displaying clubs and activities for <?php echo $_GET['schoolName'];?></p>
+    <div class="clubPage">
+    <p class='connectP'>Displaying clubs and activities for <?php echo $_GET['schoolName'];?></p>
         <?php
                 require "dbutil.php";
                 $db = DbUtil::loginConnection();
@@ -28,13 +29,14 @@
 
                 $db->close();
         ?>
-    <div>
+    <div class="clubButtons">
         <a class="homeA" href="./browseActivities.php">
             <button class="home-button">Back</button>
         </a>
-        <a href="./home.php">
+        <a class="homeA" href="./home.php">
             <button class="home-button">Home</button>
         </a>
+    </div>
     </div>
 </body>
 

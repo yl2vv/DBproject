@@ -39,7 +39,7 @@ if (preg_match($club_search, $commaclubs) == 0){
         continue;
 }
 
- echo "<tr><td>$username</td><td>$name</td><td>$school</td><td>$major</td><td>$year</td><td>$email</td><td>$commaclubs</td><td><form method='post'><button type='submit' name='connectStudents' value=$IDofStudent>select</button></form></td></tr>";
+ echo "<tr class='tableText'><td>$username</td><td>$name</td><td>$school</td><td>$major</td><td>$year</td><td>$email</td><td>$commaclubs</td><td><form class='formButton2' method='post'><button type='submit' name='connectStudents' value=$IDofStudent>select</button></form></td></tr>";
  }
  echo "</table>";
         // }

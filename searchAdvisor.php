@@ -67,7 +67,7 @@ require "db.php";
             }
         
 
-        echo "<tr><td>$username</td><td>$name</td><td>$education</td><td>$rating</td><td>$email</td><td>$alum_of</td><td>$commaexpertise</td></tr>";
+        echo "<tr class='tableText'><td>$username</td><td>$name</td><td>$education</td><td>$rating</td><td>$email</td><td>$alum_of</td><td>$commaexpertise</td></tr>";
     }
 
         //$alumquery = "SELECT GROUP_CONCAT(s_name) FROM `alum_of` NATURAL JOIN `school` WHERE school_code = '".$row['studentID']."'";

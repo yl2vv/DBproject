@@ -37,7 +37,7 @@ include("auth_session.php");
                         echo "<div class='buddyResult'><table border=1><th>Username</th><th>Name</th><th>Email</th><th>Remove</th>\n";
                         while($stmt->fetch()) {
 
-                                echo "<tr><td>$username</td><td>$name</td><td>$email</td><td><form method='post'><button type='submit' name='removeStudent' value=$studentID_b>remove</button></form></td></tr>";
+                                echo "<tr class='tableText'><td>$username</td><td>$name</td><td>$email</td><td><form class='formButton' method='post'><button type='submit' name='removeStudent' value=$studentID_b>remove</button></form></td></tr>";
                         }
                         echo "</table></div>";
 

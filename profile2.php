@@ -212,7 +212,7 @@ include("auth_session.php");
         </script>
 <body>
     <form class="form" id=profile2 method="post">
-        <h1>User</h1>
+        <h1><?php echo $_SESSION['username']; ?></h1>
     <p class="subtext">Update your Information</p>
     <div>
             <?php
@@ -225,11 +225,11 @@ include("auth_session.php");
 
                     echo "
                         <form id=findSchool>
-                        <label for='schooldrop'>School:</label><br>
+                        <label for='schooldrop'>School:</label>
                         <input id='Schoolinput' type='search' size='50' placeholder='School Name'/>
                         <button type=button form=findSchool>Search</button>
                         </form><br>
-                        <select name='schooldrop' id='schooldrop'>
+                        <br><select name='schooldrop' id='schooldrop'>
                         <option value='$school_code2'>$sname2</option>
                         </select><br><br><br>
 
@@ -252,7 +252,7 @@ include("auth_session.php");
                         <input type=text id='education_level' name='education_level' value=$education_level><br><br>
 
                         <form id=findAlma>
-                        <label for='Almadrop'>Alum of:</label><br>
+                        <label for='Almadrop'>Alum of:</label>
                         <input id='almaInput' type='search' size='50' placeholder='School Name'/>
                         <button type=button form=findAlma>Search</button>
                         </form>
